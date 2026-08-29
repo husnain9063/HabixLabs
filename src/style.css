@@ -1,0 +1,232 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Archivo Var";
+  src: url("/fonts/archivo-var.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Archivo Var";
+  src: url("/fonts/archivo-italic-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Libre Caslon Display";
+  src: url("/fonts/librecaslon-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("/fonts/plexmono-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("/fonts/plexmono-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-display: "Libre Caslon Display", "Times New Roman", Georgia, serif;
+  --font-sans: "Archivo Var", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --color-ivory: #f3eee1;
+  --color-cream: #e6dcc3;
+  --color-paper: #faf7ef;
+  --color-ink: #17140f;
+  --color-charcoal: #241f17;
+  --color-fog: #756c5a;
+  --color-stone: #b6ab90;
+  --color-bone: #ece4d1;
+  --color-copper: #bf4e18;
+  --color-copper-dim: #8f3b14;
+  --color-hairline: #d9cfb3;
+  --color-hairline-dark: rgba(236, 228, 209, 0.14);
+
+  --shadow-copper: 0 14px 34px -12px rgba(191, 78, 24, 0.4);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-hairline);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--color-copper);
+    color: var(--color-paper);
+  }
+  em, i {
+    font-style: italic;
+  }
+}
+
+@layer components {
+  .wrap {
+    max-width: 1400px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .wrap { padding-inline: 2.5rem; }
+  }
+  @media (min-width: 1280px) {
+    .wrap { padding-inline: 4rem; }
+  }
+
+  .section-pad {
+    padding-block: clamp(4.5rem, 9vw, 7.5rem);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-copper-dim);
+  }
+  .eyebrow.on-dark {
+    color: var(--color-copper);
+  }
+
+  .hairline {
+    border-top: 1px solid var(--color-hairline);
+  }
+  .hairline-dark {
+    border-top: 1px solid var(--color-hairline-dark);
+  }
+
+  .btn {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.95rem 1.6rem;
+    border-radius: 0;
+    white-space: nowrap;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  .btn:active {
+    transform: scale(0.97);
+  }
+  .btn-primary {
+    background: var(--color-copper);
+    color: var(--color-paper);
+    box-shadow: var(--shadow-copper);
+  }
+  .btn-primary:hover {
+    background: var(--color-copper-dim);
+  }
+  .btn-outline {
+    border: 1px solid var(--color-ink);
+    color: var(--color-ink);
+  }
+  .btn-outline:hover {
+    background: var(--color-ink);
+    color: var(--color-ivory);
+  }
+  .btn-outline-light {
+    border: 1px solid var(--color-hairline-dark);
+    color: var(--color-bone);
+  }
+  .btn-outline-light:hover {
+    border-color: var(--color-bone);
+    background: var(--color-hairline-dark);
+  }
+
+  .link-underline {
+    background-image: linear-gradient(var(--color-ink), var(--color-ink));
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+  .link-underline-light {
+    background-image: linear-gradient(var(--color-bone), var(--color-bone));
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .link-underline-light:hover {
+    background-size: 100% 1px;
+  }
+
+  .photo {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-cream);
+  }
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(0.88) contrast(1.08) brightness(0.97) sepia(0.16);
+    transform: scale(1.01);
+  }
+  .photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--color-copper-dim);
+    mix-blend-mode: multiply;
+    opacity: 0.1;
+    pointer-events: none;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--color-hairline);
+    padding: 0.3rem 0.6rem;
+    color: var(--color-fog);
+  }
+
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  .reveal-child > * {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
