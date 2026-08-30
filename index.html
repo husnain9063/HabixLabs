@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Habix Labs — Technology &amp; Creative Studio</title>
 <meta name="description" content="Habix Labs is a technology and creative studio building premium digital experiences, intelligent systems, and infrastructure for ambitious businesses." />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 fill=%22%2308090a%22/><rect x=%228%22 y=%228%22 width=%228%22 height=%228%22 fill=%22%23d7ff3e%22 transform=%22rotate(45 12 12)%22/></svg>" />
+<link rel="icon" type="image/png" href="/favicon.png" />
 </head>
 <body>
 
@@ -31,31 +31,32 @@
 
 <!-- ============ FLOATING NAV ============ -->
 <header id="nav" class="fixed top-4 md:top-6 inset-x-0 z-50">
-  <div class="wrap flex justify-center">
-    <div class="flex items-center gap-2 md:gap-6 bg-panel-1 border border-line rounded-full pl-2 pr-2 py-2 backdrop-blur-md" style="background:rgba(10,10,11,0.72);border-color:var(--color-line)">
-      <a href="#top" class="flex items-center gap-2 pl-2 pr-1 shrink-0" aria-label="Habix Labs home">
-        <span class="w-6 h-6 rounded-full flex items-center justify-center" style="background:var(--color-accent)">
-          <span class="block w-2 h-2 bg-[#0a0a0a]" style="transform:rotate(45deg)"></span>
-        </span>
+  <div class="wrap">
+    <div class="grid grid-cols-3 items-center bg-panel-1 border border-line rounded-3xl pl-3 pr-3 md:pl-5 md:pr-4 py-3 backdrop-blur-md" style="background:rgba(10,10,11,0.72);border-color:var(--color-line)">
+      <a href="#top" class="col-start-1 flex items-center gap-2.5 shrink-0 justify-self-start" aria-label="Habix Labs home">
+        <img src="/logo-mark.png" alt="" class="w-7 h-7" width="288" height="289" />
+        <span class="font-display font-bold text-base tracking-tight">Habix Labs</span>
       </a>
-      <nav class="hidden lg:flex items-center gap-7 px-2" aria-label="Primary">
+      <nav class="col-start-2 hidden lg:flex items-center gap-8 justify-self-center" aria-label="Primary">
         <a href="#work" class="font-mono text-xs uppercase tracking-[0.06em] link-underline pb-1">Work</a>
         <a href="#services" class="font-mono text-xs uppercase tracking-[0.06em] link-underline pb-1">Services</a>
         <a href="#numbers" class="font-mono text-xs uppercase tracking-[0.06em] link-underline pb-1">Studio</a>
         <a href="#testimonials" class="font-mono text-xs uppercase tracking-[0.06em] link-underline pb-1">Reviews</a>
       </nav>
-      <a href="#cta" class="btn btn-accent !py-2.5 !px-4">
-        Get In Touch <span class="btn-icon"><svg class="w-3 h-3"><use href="#i-arrow-up-right"/></svg></span>
-      </a>
-      <button id="menu-btn" class="lg:hidden p-2 rounded-full hover:bg-panel-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-        <svg class="w-4 h-4"><use href="#i-list"/></svg>
-      </button>
+      <div class="col-start-3 justify-self-end">
+        <button type="button" data-open-modal class="hidden lg:inline-flex btn btn-accent !py-2.5 !px-4">
+          Get In Touch <span class="btn-icon"><svg class="w-3 h-3"><use href="#i-arrow-up-right"/></svg></span>
+        </button>
+        <button id="menu-btn" type="button" class="lg:hidden p-2 rounded-full hover:bg-panel-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <svg class="w-4 h-4"><use href="#i-list"/></svg>
+        </button>
+      </div>
     </div>
   </div>
 </header>
 
 <!-- Mobile menu -->
-<div id="mobile-menu" class="fixed inset-0 z-[70] bg-bg text-fg translate-y-[-100%] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden" aria-hidden="true">
+<div id="mobile-menu" class="fixed inset-0 z-[70] bg-bg text-fg transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden" aria-hidden="true">
   <div class="wrap h-20 flex items-center justify-between">
     <span class="font-display font-extrabold text-[15px] tracking-tight">HABIX LABS</span>
     <button id="menu-close" class="p-2 -mr-2" aria-label="Close menu">
@@ -67,29 +68,82 @@
     <a data-menu-link href="#services" class="font-display font-bold text-5xl py-3 hairline">Services</a>
     <a data-menu-link href="#numbers" class="font-display font-bold text-5xl py-3 hairline">Studio</a>
     <a data-menu-link href="#testimonials" class="font-display font-bold text-5xl py-3 hairline">Reviews</a>
-    <a data-menu-link href="#cta" class="font-display font-bold text-5xl py-3 hairline">Contact</a>
-    <a data-menu-link href="#cta" class="btn btn-accent w-fit mt-8">
+    <button type="button" data-menu-link data-open-modal class="font-display font-bold text-5xl py-3 hairline text-left">Contact</button>
+    <button type="button" data-menu-link data-open-modal class="btn btn-accent w-fit mt-8">
       Get In Touch <span class="btn-icon"><svg class="w-3 h-3"><use href="#i-arrow-up-right"/></svg></span>
-    </a>
+    </button>
   </nav>
+</div>
+
+<!-- ============ CONTACT MODAL ============ -->
+<div id="contact-modal" class="fixed inset-0 z-[80] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300" aria-hidden="true">
+  <div id="contact-overlay" class="absolute inset-0" style="background:rgba(4,4,5,0.8)"></div>
+  <div class="card relative w-full max-w-lg p-7 md:p-9 max-h-[90vh] overflow-y-auto scale-95 transition-transform duration-300" id="contact-panel" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+    <button type="button" id="contact-close" class="absolute top-5 right-5 w-9 h-9 rounded-full border border-line flex items-center justify-center hover:bg-panel-2 transition-colors" aria-label="Close form">
+      <svg class="w-4 h-4"><use href="#i-x"/></svg>
+    </button>
+
+    <span class="eyebrow-pill">
+      <svg class="w-3 h-3"><use href="#i-lightning"/></svg> Book a Call
+    </span>
+    <h3 id="contact-modal-title" class="mt-5 font-display font-bold text-3xl tracking-tight">Let's talk.</h3>
+    <p class="mt-2 text-sm max-w-[42ch]" style="color:var(--color-dim)">Tell us a bit about your project — we'll reply from team@habixlabs.site within one business day.</p>
+
+    <form id="contact-form" class="mt-7 flex flex-col gap-4">
+      <div>
+        <label for="cf-name" class="font-mono text-xs uppercase tracking-[0.06em]" style="color:var(--color-dim)">Name</label>
+        <input id="cf-name" name="name" type="text" required autocomplete="name" class="field mt-2" placeholder="Your name" />
+      </div>
+      <div>
+        <label for="cf-email" class="font-mono text-xs uppercase tracking-[0.06em]" style="color:var(--color-dim)">Email</label>
+        <input id="cf-email" name="email" type="email" required autocomplete="email" class="field mt-2" placeholder="you@company.com" />
+      </div>
+      <div>
+        <label for="cf-company" class="font-mono text-xs uppercase tracking-[0.06em]" style="color:var(--color-dim)">Company <span style="color:var(--color-faint)">(optional)</span></label>
+        <input id="cf-company" name="company" type="text" autocomplete="organization" class="field mt-2" placeholder="Company or brand" />
+      </div>
+      <div>
+        <label for="cf-message" class="font-mono text-xs uppercase tracking-[0.06em]" style="color:var(--color-dim)">Project details</label>
+        <textarea id="cf-message" name="message" required rows="4" class="field mt-2" placeholder="What are you looking to build?"></textarea>
+      </div>
+
+      <input type="hidden" name="subject" value="New project inquiry — Habix Labs website" />
+      <input type="hidden" name="from_name" value="Habix Labs Website" />
+      <input type="text" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+      <button type="submit" id="cf-submit" class="btn btn-accent justify-center mt-2">
+        <span id="cf-submit-label">Send Message</span> <span class="btn-icon"><svg class="w-3 h-3"><use href="#i-arrow-up-right"/></svg></span>
+      </button>
+      <p id="cf-status" class="text-sm text-center min-h-[1.25em]" role="status" aria-live="polite"></p>
+    </form>
+  </div>
 </div>
 
 <main id="top">
 
   <!-- ============ HERO ============ -->
-  <section class="relative pt-40 pb-20 md:pt-48 md:pb-28 overflow-hidden">
-    <div class="rays"></div>
-    <div class="grid-lines"></div>
-    <div class="wrap relative text-center">
-      <h1 class="font-display font-extrabold text-[11vw] leading-[0.98] tracking-tight md:text-[4.6rem] lg:text-[5.4rem] max-w-5xl mx-auto">
-        <span data-word class="font-normal text-dim">Premium</span> <span data-word>Web</span> <span data-word class="font-normal text-dim">&amp;</span>
-        <span data-word>Intelligent</span> <span data-word class="font-normal text-dim">Systems</span>
-        <span data-word>That</span> <span data-word>Turn</span> <span data-word class="font-normal text-dim">Visitors</span>
-        <span data-word>Into</span> <span data-word>Customers.</span>
-      </h1>
-      <p class="mt-7 text-lg max-w-[46ch] mx-auto" style="color:var(--color-dim)" data-reveal>
-        Transforming startups, SMEs, and growing brands into digital leaders — design, engineering, and AI under one roof.
-      </p>
+  <section id="hero-perspective" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden" style="perspective:1600px">
+    <div class="wrap relative">
+      <div id="aurora-card" class="aurora-card text-center px-6 py-20 md:py-28">
+        <div id="liquid-metal-bg" class="absolute inset-0 z-0 rounded-[24px] overflow-hidden" aria-hidden="true"></div>
+        <div class="absolute inset-0 z-[1] rounded-[24px] pointer-events-none" style="background:radial-gradient(ellipse at 50% 35%, rgba(0,0,0,0.35), rgba(0,0,0,0.6))" aria-hidden="true"></div>
+        <div class="relative z-10">
+        <h1 class="hero-headline font-display font-extrabold text-[11vw] leading-[0.98] md:text-[4.6rem] lg:text-[5.4rem] max-w-5xl mx-auto">
+          <span data-word class="font-normal" style="color:rgba(255,255,255,0.55)">Premium</span> <span data-word>Web</span> <span data-word class="font-normal" style="color:rgba(255,255,255,0.55)">&amp;</span>
+          <span data-word>Intelligent</span> <span data-word class="font-normal" style="color:rgba(255,255,255,0.55)">Systems</span>
+          <span data-word>That</span> <span data-word>Turn</span> <span data-word class="font-normal" style="color:rgba(255,255,255,0.55)">Visitors</span>
+          <span data-word>Into</span> <span data-word>Customers.</span>
+        </h1>
+        <p class="mt-7 text-lg max-w-[46ch] mx-auto" style="color:#cccccc" data-reveal>
+          Transforming startups, SMEs, and growing brands into digital leaders — design, engineering, and AI under one roof.
+        </p>
+        <div class="mt-9 flex flex-wrap items-center justify-center gap-3" data-reveal>
+          <button type="button" data-open-modal class="btn-white">
+            Start a Project <span class="btn-icon"><svg class="w-3 h-3"><use href="#i-arrow-up-right"/></svg></span>
+          </button>
+        </div>
+        </div>
+      </div>
     </div>
 
     <div class="wrap mt-14 md:mt-20" data-reveal>
@@ -138,9 +192,9 @@
       <p class="mt-5 max-w-[52ch] mx-auto" style="color:var(--color-dim)" data-reveal>
         Providing end-to-end solutions for brands to thrive in the ever-evolving digital landscape.
       </p>
-      <a href="#cta" class="btn btn-accent mt-8" data-reveal>
+      <button type="button" data-open-modal class="btn btn-accent mt-8" data-reveal>
         Book a call <span class="btn-icon"><svg class="w-3 h-3"><use href="#i-arrow-up-right"/></svg></span>
-      </a>
+      </button>
     </div>
 
     <div class="wrap mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 reveal-child">
@@ -373,9 +427,9 @@
 
     <div class="wrap mt-10 text-center" data-reveal>
       <p style="color:var(--color-dim)">Be our next client in this section.</p>
-      <a href="#cta" class="btn btn-accent mt-5">
+      <button type="button" data-open-modal class="btn btn-accent mt-5">
         Book a call <span class="btn-icon"><svg class="w-3 h-3"><use href="#i-arrow-up-right"/></svg></span>
-      </a>
+      </button>
     </div>
   </section>
 
@@ -444,9 +498,9 @@
         Ready to stand out from the competition? Let's build something extraordinary together and take your brand to the next level.
       </p>
       <div class="mt-10 flex flex-col sm:flex-row items-center gap-6" data-reveal>
-        <a href="mailto:team@habixlabs.site" class="btn btn-accent">
+        <button type="button" data-open-modal class="btn btn-accent">
           Book a call <span class="btn-icon"><svg class="w-3 h-3"><use href="#i-arrow-up-right"/></svg></span>
-        </a>
+        </button>
         <a href="mailto:team@habixlabs.site" class="font-mono text-sm link-underline pb-1">team@habixlabs.site</a>
       </div>
     </div>
@@ -459,9 +513,7 @@
   <div class="wrap section-pad">
     <div class="grid lg:grid-cols-12 gap-12">
       <div class="lg:col-span-5">
-        <span class="w-9 h-9 rounded-full flex items-center justify-center mb-6" style="background:var(--color-accent)">
-          <span class="block w-3 h-3 bg-[#0a0a0a]" style="transform:rotate(45deg)"></span>
-        </span>
+        <img src="/logo-mark.png" alt="" class="w-11 h-11 mb-6" width="288" height="289" />
         <h2 class="font-display font-bold text-5xl md:text-6xl tracking-tight">Habix Labs</h2>
         <p class="mt-4" style="color:var(--color-dim)">Harnessing cutting-edge technology to transform vision into tailored digital reality.</p>
         <div class="flex items-center gap-4 mt-8">
@@ -484,7 +536,7 @@
           <li><a href="#services" class="link-underline pb-0.5">Services</a></li>
           <li><a href="#numbers" class="link-underline pb-0.5">Studio</a></li>
           <li><a href="#testimonials" class="link-underline pb-0.5">Reviews</a></li>
-          <li><a href="#cta" class="link-underline pb-0.5">Contact</a></li>
+          <li><button type="button" data-open-modal class="link-underline pb-0.5">Contact</button></li>
         </ul>
       </div>
 
@@ -507,6 +559,8 @@
     <span>© 2026 Habix Labs. All Rights Reserved.</span>
   </div>
 </footer>
+
+<img id="scroll-logo" src="/logo-mark.png" alt="" class="fixed z-40 pointer-events-none select-none w-7 h-7 md:w-9 md:h-9" style="top:100px;right:5%;opacity:0.85;will-change:transform" aria-hidden="true" />
 
 <script type="module" src="/src/main.js"></script>
 </body>

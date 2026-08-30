@@ -13,6 +13,7 @@
     "vite": "^6.0.0"
   },
   "dependencies": {
+    "@paper-design/shaders": "^0.0.80",
     "gsap": "^3.12.7"
   },
   "allowScripts": {
