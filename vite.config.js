@@ -1,4 +1,3 @@
-import { resolve } from "path";
 import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 
@@ -10,11 +9,5 @@ export default defineConfig(({ command }) => ({
   base: command === "build" && process.env.GITHUB_ACTIONS ? "/HabixLabs/" : "/",
   build: {
     target: "es2020",
-    rollupOptions: {
-      input: {
-        main: resolve(process.cwd(), "index.html"),
-        ai: resolve(process.cwd(), "ai.html"),
-      },
-    },
   },
 }));
