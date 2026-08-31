@@ -12,6 +12,15 @@ import {
 
 gsap.registerPlugin(ScrollTrigger);
 
+/* ---------- Preloader ---------- */
+const preloader = document.getElementById("preloader");
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    preloader?.classList.add("is-hidden");
+    setTimeout(() => preloader?.remove(), 500);
+  }, 600);
+});
+
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ---------- Mobile menu ---------- */
