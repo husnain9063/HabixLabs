@@ -12,13 +12,28 @@ import {
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ---------- Preloader ---------- */
+/* ---------- Preloader: circular progress ---------- */
 const preloader = document.getElementById("preloader");
+const ring = document.getElementById("progress-ring");
+const progressText = document.getElementById("progress-text");
+const CIRCUMFERENCE = 276.5;
+
+let progress = 0;
+const progressTimer = setInterval(() => {
+  progress = Math.min(100, progress + Math.random() * 9 + 3);
+  if (ring) ring.style.strokeDashoffset = String(CIRCUMFERENCE * (1 - progress / 100));
+  if (progressText) progressText.textContent = Math.round(progress) + "%";
+  if (progress >= 100) clearInterval(progressTimer);
+}, 110);
+
 window.addEventListener("load", () => {
   setTimeout(() => {
     preloader?.classList.add("is-hidden");
-    setTimeout(() => preloader?.remove(), 500);
-  }, 600);
+    setTimeout(() => {
+      preloader?.remove();
+      clearInterval(progressTimer);
+    }, 500);
+  }, 1300);
 });
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
